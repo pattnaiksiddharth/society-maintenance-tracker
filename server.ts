@@ -45,11 +45,13 @@ if (!process.env.JWT_SECRET) {
 app.use(helmet({ contentSecurityPolicy: isDev ? false : undefined }));
 
 // ── CORS ──────────────────────────────────────────────────────────────────────
-const allowedOrigin = process.env.FRONTEND_URL || 'http://localhost:3000';
+const allowedOrigin =
+  process.env.FRONTEND_URL || 'https://society-maintenance-tracker-teal.vercel.app';
+
 app.use(
   cors({
     origin: allowedOrigin,
-    credentials: true,                              // allow cookies to be sent
+    credentials: true,
     methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE'],
     allowedHeaders: ['Content-Type', 'Authorization'],
   })
