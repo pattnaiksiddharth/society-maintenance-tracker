@@ -1,9 +1,9 @@
-import { app } from '../server';
-import { connectDB } from '../server/db';
+import { app } from '../server.ts';
+import { connectDB } from '../server/db.ts';
 
-let dbPromise: Promise<unknown> | null = null;
+let dbPromise = null;
 
-export default async function handler(req: any, res: any) {
+export default async function handler(req, res) {
   if (!dbPromise) {
     dbPromise = connectDB();
   }
