@@ -15,25 +15,26 @@ export const api = {
 
   /** Restore the current session from the JWT httpOnly cookie. */
   async me(): Promise<User> {
-    const res = await fetch('/api/auth/me');
+    const res = await fetch('/api/auth/me', { credentials: 'include' });
     if (!res.ok) throw new Error('Not authenticated');
     return res.json();
   },
 
   /** Admin only — fetch full user list (used by dev persona switcher). */
   async getUsers(): Promise<User[]> {
-    const res = await fetch('/api/auth/users');
+    const res = await fetch('/api/auth/users', { credentials: 'include' });
     if (!res.ok) throw new Error('Failed to load users');
     return res.json();
   },
 
   async logout(): Promise<void> {
-    await fetch('/api/auth/logout', { method: 'POST' });
+    await fetch('/api/auth/logout', { method: 'POST', credentials: 'include' });
   },
 
   async login(email: string, password?: string): Promise<User> {
     const res = await fetch('/api/auth/login', {
       method: 'POST',
+      credentials: 'include',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ email, password })
     });
@@ -47,6 +48,7 @@ export const api = {
   async register(data: { name: string; email: string; unitNumber: string; contactNumber?: string; role?: string; password?: string }): Promise<User> {
     const res = await fetch('/api/auth/register', {
       method: 'POST',
+      credentials: 'include',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(data)
     });
@@ -59,7 +61,7 @@ export const api = {
 
   // Stats
   async getStats(): Promise<DashboardStats> {
-    const res = await fetch('/api/stats');
+    const res = await fetch('/api/stats', { credentials: 'include' });
     if (!res.ok) throw new Error('Failed to fetch stats');
     return res.json();
   },
@@ -81,13 +83,13 @@ export const api = {
     if (params?.residentId) query.set('residentId', params.residentId);
     if (params?.search) query.set('search', params.search);
 
-    const res = await fetch(`/api/complaints?${query.toString()}`);
+    const res = await fetch(`/api/complaints?${query.toString()}`, { credentials: 'include' });
     if (!res.ok) throw new Error('Failed to fetch complaints');
     return res.json();
   },
 
   async getComplaint(id: string): Promise<Complaint> {
-    const res = await fetch(`/api/complaints/${id}`);
+    const res = await fetch(`/api/complaints/${id}`, { credentials: 'include' });
     if (!res.ok) throw new Error('Complaint not found');
     return res.json();
   },
@@ -105,6 +107,7 @@ export const api = {
   }): Promise<Complaint> {
     const res = await fetch('/api/complaints', {
       method: 'POST',
+      credentials: 'include',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(data)
     });
@@ -129,6 +132,7 @@ export const api = {
   ): Promise<Complaint> {
     const res = await fetch(`/api/complaints/${id}/status`, {
       method: 'PATCH',
+      credentials: 'include',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload)
     });
@@ -139,6 +143,7 @@ export const api = {
   async updateComplaintPriority(id: string, priority: ComplaintPriority): Promise<Complaint> {
     const res = await fetch(`/api/complaints/${id}/priority`, {
       method: 'PATCH',
+      credentials: 'include',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ priority })
     });
@@ -148,7 +153,7 @@ export const api = {
 
   // Notices
   async getNotices(): Promise<Notice[]> {
-    const res = await fetch('/api/notices');
+    const res = await fetch('/api/notices', { credentials: 'include' });
     if (!res.ok) throw new Error('Failed to fetch notices');
     return res.json();
   },
@@ -164,6 +169,7 @@ export const api = {
   }): Promise<Notice> {
     const res = await fetch('/api/notices', {
       method: 'POST',
+      credentials: 'include',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(data)
     });
@@ -173,14 +179,15 @@ export const api = {
 
   async deleteNotice(id: string): Promise<void> {
     const res = await fetch(`/api/notices/${id}`, {
-      method: 'DELETE'
+      method: 'DELETE',
+      credentials: 'include'
     });
     if (!res.ok) throw new Error('Failed to delete notice');
   },
 
   // Settings
   async getSettings(): Promise<SystemSettings> {
-    const res = await fetch('/api/settings');
+    const res = await fetch('/api/settings', { credentials: 'include' });
     if (!res.ok) throw new Error('Failed to fetch settings');
     return res.json();
   },
@@ -188,6 +195,7 @@ export const api = {
   async updateSettings(data: Partial<SystemSettings>): Promise<SystemSettings> {
     const res = await fetch('/api/settings', {
       method: 'PUT',
+      credentials: 'include',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(data)
     });
@@ -197,13 +205,13 @@ export const api = {
 
   // Email Logs
   async getEmails(): Promise<EmailLog[]> {
-    const res = await fetch('/api/emails');
+    const res = await fetch('/api/emails', { credentials: 'include' });
     if (!res.ok) throw new Error('Failed to fetch email logs');
     return res.json();
   },
 
   // Reset Demo
   async resetDemo(): Promise<void> {
-    await fetch('/api/admin/reset-demo', { method: 'POST' });
+    await fetch('/api/admin/reset-demo', { method: 'POST', credentials: 'include' });
   }
 };

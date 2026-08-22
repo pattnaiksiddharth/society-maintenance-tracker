@@ -42,8 +42,8 @@ export function setCookieToken(res: Response, token: string): void {
   const maxAgeMs = 24 * 60 * 60 * 1000;
   res.cookie(COOKIE_NAME, token, {
     httpOnly: true,
-    secure: isProduction,      // HTTPS only in production
-    sameSite: 'lax',           // CSRF protection while allowing normal navigation
+    secure: isProduction,
+    sameSite: isProduction ? 'none' : 'lax',
     maxAge: maxAgeMs,
     path: '/',
   });
@@ -54,7 +54,7 @@ export function clearCookieToken(res: Response): void {
   res.clearCookie(COOKIE_NAME, {
     httpOnly: true,
     secure: process.env.NODE_ENV === 'production',
-    sameSite: 'lax',
+    sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax',
     path: '/',
   });
 }
