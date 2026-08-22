@@ -30,7 +30,7 @@ import type {
   ComplaintCategory,
 } from './src/types';
 
-const app = express();
+export const app = express();
 const PORT = parseInt(process.env.PORT || '3000', 10);
 const isDev = process.env.NODE_ENV !== 'production';
 
@@ -928,7 +928,9 @@ async function startServer() {
   });
 }
 
-startServer().catch((err) => {
-  console.error('Failed to start server:', err);
-  process.exit(1);
-});
+if (!process.env.VERCEL) {
+  startServer().catch((err) => {
+    console.error('Failed to start server:', err);
+    process.exit(1);
+  });
+}
