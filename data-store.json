@@ -1,0 +1,279 @@
+{
+  "users": [
+    {
+      "id": "u-admin-1",
+      "name": "Anil Sharma",
+      "email": "anil@society.org",
+      "role": "admin",
+      "unitNumber": "Admin Office",
+      "contactNumber": "+91 98765 43210",
+      "avatarUrl": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80",
+      "createdAt": "2024-01-01T00:00:00.000Z"
+    },
+    {
+      "id": "u-res-1",
+      "name": "Vikram Malhotra",
+      "email": "vikram@society.org",
+      "role": "resident",
+      "unitNumber": "A-402",
+      "contactNumber": "+91 98234 56789",
+      "avatarUrl": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80",
+      "createdAt": "2024-02-15T00:00:00.000Z"
+    },
+    {
+      "id": "u-res-2",
+      "name": "Sara Khan",
+      "email": "sara@society.org",
+      "role": "resident",
+      "unitNumber": "B-105",
+      "contactNumber": "+91 97123 45678",
+      "avatarUrl": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&auto=format&fit=crop&q=80",
+      "createdAt": "2024-03-10T00:00:00.000Z"
+    },
+    {
+      "id": "u-res-3",
+      "name": "Rajesh Kumar",
+      "email": "rajesh@society.org",
+      "role": "resident",
+      "unitNumber": "C-708",
+      "contactNumber": "+91 99887 76655",
+      "avatarUrl": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&auto=format&fit=crop&q=80",
+      "createdAt": "2024-04-01T00:00:00.000Z"
+    },
+    {
+      "id": "u-res-4",
+      "name": "Sunita Rao",
+      "email": "sunita@society.org",
+      "role": "resident",
+      "unitNumber": "D-302",
+      "contactNumber": "+91 91234 56780",
+      "avatarUrl": "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150&auto=format&fit=crop&q=80",
+      "createdAt": "2024-05-12T00:00:00.000Z"
+    }
+  ],
+  "settings": {
+    "societyName": "Silver Oaks Residency",
+    "overdueThresholdDays": 7,
+    "emailNotificationsEnabled": true,
+    "smsNotificationsEnabled": false,
+    "autoAssignCategory": true,
+    "workingHours": "08:00 AM - 08:00 PM",
+    "updatedAt": "2026-08-22T17:11:47.815Z"
+  },
+  "complaints": [
+    {
+      "id": "c-1001",
+      "code": "CMP-1042",
+      "residentId": "u-res-1",
+      "residentName": "Vikram Malhotra",
+      "residentUnit": "A-402",
+      "residentContact": "+91 98234 56789",
+      "category": "Plumbing",
+      "title": "Master bathroom flush pipe continuous leakage",
+      "description": "Water has been continuously dripping from the concealed valve connection behind the toilet. Mild dampness appearing on outer drywall.",
+      "photoUrl": "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=600&auto=format&fit=crop&q=80",
+      "status": "IN_PROGRESS",
+      "priority": "HIGH",
+      "assignedTo": "Ramesh Plumbing Works",
+      "createdAt": "2026-08-20T17:11:47.816Z",
+      "updatedAt": "2026-08-21T17:11:47.816Z"
+    },
+    {
+      "id": "c-1002",
+      "code": "CMP-1039",
+      "residentId": "u-res-2",
+      "residentName": "Sara Khan",
+      "residentUnit": "B-105",
+      "residentContact": "+91 97123 45678",
+      "category": "Electrical",
+      "title": "Frequent circuit breaker trip in kitchen power sockets",
+      "description": "Whenever the microwave and induction stove run simultaneously, the MCB trips immediately. Suspect internal wire burning or fuse socket overload.",
+      "photoUrl": "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=600&auto=format&fit=crop&q=80",
+      "status": "OPEN",
+      "priority": "MEDIUM",
+      "createdAt": "2026-08-13T17:11:47.816Z",
+      "updatedAt": "2026-08-13T17:11:47.816Z"
+    },
+    {
+      "id": "c-1003",
+      "code": "CMP-1041",
+      "residentId": "u-res-3",
+      "residentName": "Rajesh Kumar",
+      "residentUnit": "C-708",
+      "residentContact": "+91 99887 76655",
+      "category": "Elevator",
+      "title": "Tower C passenger lift jerk & floor misalignment",
+      "description": "Lift No. 2 experiences significant mechanical vibrations while passing between 5th and 7th floors. Stopped 2 inches below level on floor 7.",
+      "photoUrl": "https://images.unsplash.com/photo-1541888946425-d0fbb18086f7?w=600&auto=format&fit=crop&q=80",
+      "status": "IN_PROGRESS",
+      "priority": "HIGH",
+      "assignedTo": "Otis Elevator Team",
+      "createdAt": "2026-08-21T17:11:47.816Z",
+      "updatedAt": "2026-08-22T13:11:47.816Z"
+    },
+    {
+      "id": "c-1004",
+      "code": "CMP-1044",
+      "residentId": "u-res-4",
+      "residentName": "Sunita Rao",
+      "residentUnit": "D-302",
+      "residentContact": "+91 91234 56780",
+      "category": "Water",
+      "title": "Low overhead tank water pressure in utility sink",
+      "description": "Water pressure has dropped significantly in the utility wash basin. Aerator was cleaned but flow remains restricted.",
+      "status": "OPEN",
+      "priority": "LOW",
+      "createdAt": "2026-08-22T13:11:47.816Z",
+      "updatedAt": "2026-08-22T13:11:47.816Z"
+    },
+    {
+      "id": "c-1005",
+      "code": "CMP-1035",
+      "residentId": "u-res-1",
+      "residentName": "Vikram Malhotra",
+      "residentUnit": "A-402",
+      "residentContact": "+91 98234 56789",
+      "category": "Carpentry",
+      "title": "Balcony sliding glass door lock jammed",
+      "description": "The metallic hook latch on the double-glazed balcony door got stuck and could not latch tightly during heavy winds.",
+      "status": "RESOLVED",
+      "priority": "MEDIUM",
+      "createdAt": "2026-08-08T17:11:47.816Z",
+      "updatedAt": "2026-08-10T17:11:47.816Z",
+      "resolvedAt": "2026-08-10T17:11:47.816Z"
+    },
+    {
+      "id": "c-1006",
+      "code": "CMP-1031",
+      "residentId": "u-res-2",
+      "residentName": "Sara Khan",
+      "residentUnit": "B-105",
+      "residentContact": "+91 97123 45678",
+      "category": "Common Area",
+      "title": "Podium garden pathway light pole flickering",
+      "description": "Light pole near kids play gazebo blinks erratically in the evening creating dark blindspots.",
+      "status": "RESOLVED",
+      "priority": "LOW",
+      "createdAt": "2026-08-02T17:11:47.816Z",
+      "updatedAt": "2026-08-04T17:11:47.816Z",
+      "resolvedAt": "2026-08-04T17:11:47.816Z"
+    }
+  ],
+  "history": [
+    {
+      "id": "h-1",
+      "complaintId": "c-1001",
+      "previousStatus": "OPEN",
+      "newStatus": "IN_PROGRESS",
+      "actorId": "u-admin-1",
+      "actorName": "Anil Sharma",
+      "actorRole": "admin",
+      "note": "Dispatched plumbing contractor to inspect concealed pipe joint.",
+      "timestamp": "2026-08-21T17:11:47.816Z"
+    },
+    {
+      "id": "h-2",
+      "complaintId": "c-1003",
+      "previousStatus": "OPEN",
+      "newStatus": "IN_PROGRESS",
+      "actorId": "u-admin-1",
+      "actorName": "Anil Sharma",
+      "actorRole": "admin",
+      "note": "Emergency technician ticket logged with Otis Support team.",
+      "timestamp": "2026-08-22T13:11:47.816Z"
+    },
+    {
+      "id": "h-3",
+      "complaintId": "c-1005",
+      "previousStatus": "OPEN",
+      "newStatus": "IN_PROGRESS",
+      "actorId": "u-admin-1",
+      "actorName": "Anil Sharma",
+      "actorRole": "admin",
+      "note": "Carpenter visited and requested replacement lock kit.",
+      "timestamp": "2026-08-09T17:11:47.816Z"
+    },
+    {
+      "id": "h-4",
+      "complaintId": "c-1005",
+      "previousStatus": "IN_PROGRESS",
+      "newStatus": "RESOLVED",
+      "actorId": "u-admin-1",
+      "actorName": "Anil Sharma",
+      "actorRole": "admin",
+      "note": "Installed new brass latch assembly. Tested and verified with resident.",
+      "timestamp": "2026-08-10T17:11:47.816Z"
+    },
+    {
+      "id": "h-5",
+      "complaintId": "c-1006",
+      "previousStatus": "OPEN",
+      "newStatus": "RESOLVED",
+      "actorId": "u-admin-1",
+      "actorName": "Anil Sharma",
+      "actorRole": "admin",
+      "note": "Replaced 40W outdoor LED driver and waterproof terminal seal.",
+      "timestamp": "2026-08-04T17:11:47.816Z"
+    }
+  ],
+  "notices": [
+    {
+      "id": "n-1",
+      "title": "Quarterly Water Tank Cleaning & Treatment",
+      "content": "Main underground and overhead reservoir tanks across all towers will undergo pressure sanitization and UV disinfection. Water supply will be paused between 10:00 AM and 02:00 PM this Friday. Please store adequate drinking water.",
+      "category": "IMPORTANT",
+      "important": true,
+      "authorId": "u-admin-1",
+      "authorName": "Anil Sharma",
+      "authorRole": "admin",
+      "createdAt": "2026-08-21T17:11:47.816Z",
+      "updatedAt": "2026-08-21T17:11:47.816Z"
+    },
+    {
+      "id": "n-2",
+      "title": "Tower C Passenger Elevator Motor Overhaul",
+      "content": "Block C elevator 2 will be taken offline for scheduled gearless motor replacement and governor calibration. Elevator 1 remains fully operational with dedicated service personnel on standby.",
+      "category": "MAINTENANCE",
+      "important": false,
+      "authorId": "u-admin-1",
+      "authorName": "Anil Sharma",
+      "authorRole": "admin",
+      "createdAt": "2026-08-19T17:11:47.816Z",
+      "updatedAt": "2026-08-19T17:11:47.816Z"
+    },
+    {
+      "id": "n-3",
+      "title": "Annual General Body Meeting & Budget 2024",
+      "content": "Join all managing committee members at the central clubhouse banquet hall to review the annual audited accounts, solar panel installation roadmap, and 2024 maintenance budget allocation.",
+      "category": "EVENT",
+      "important": false,
+      "authorId": "u-admin-1",
+      "authorName": "Anil Sharma",
+      "authorRole": "admin",
+      "createdAt": "2026-08-15T17:11:47.816Z",
+      "updatedAt": "2026-08-15T17:11:47.816Z"
+    }
+  ],
+  "emailLogs": [
+    {
+      "id": "em-1",
+      "to": "vikram@society.org",
+      "recipientName": "Vikram Malhotra",
+      "subject": "Update: Complaint CMP-1042 marked In Progress",
+      "body": "Hello Vikram,\n\nYour complaint CMP-1042 (Plumbing) has been assigned to 'Ramesh Plumbing Works' and is currently IN PROGRESS. Our team will visit your flat shortly.\n\nRegards,\nSilver Oaks Maintenance Desk",
+      "type": "STATUS_UPDATED",
+      "referenceId": "c-1001",
+      "sentAt": "2026-08-21T17:11:47.816Z"
+    },
+    {
+      "id": "em-2",
+      "to": "all-residents@silveroaks.org",
+      "recipientName": "All Residents",
+      "subject": "IMPORTANT NOTICE: Quarterly Water Tank Cleaning & Treatment",
+      "body": "Dear Residents,\n\nPlease be advised that water tank sanitization will take place this Friday between 10:00 AM and 02:00 PM. Kindly plan your usage accordingly.\n\nRegards,\nSilver Oaks Managing Committee",
+      "type": "NOTICE_BROADCAST",
+      "referenceId": "n-1",
+      "sentAt": "2026-08-21T17:11:47.816Z"
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+{
+  "name": "Society Maintenance Tracker",
+  "description": "Comprehensive maintenance complaint tracking, overdue SLA monitoring, notice board, and role-based portal for residents and admins.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
