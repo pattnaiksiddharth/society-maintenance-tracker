@@ -1,5 +1,5 @@
-import { app } from '../server';
-import { connectDB } from '../server/db';
+import { app } from './server';
+import { connectDB } from './server/db';
 
 let dbPromise: Promise<unknown> | null = null;
 
