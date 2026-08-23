@@ -15,13 +15,13 @@ import path from 'path';
 import fs from 'fs';
 import mongoose from 'mongoose';
 import bcrypt from 'bcryptjs';
-import { connectDB } from '../server/db';
-import User from '../server/models/User';
-import Complaint from '../server/models/Complaint';
-import ComplaintHistory from '../server/models/ComplaintHistory';
-import Notice from '../server/models/Notice';
-import Settings, { getSettings } from '../server/models/Settings';
-import EmailLog from '../server/models/EmailLog';
+import { connectDB } from './server/db.js';
+import User from './server/models/User.js';
+import Complaint from './server/models/Complaint.js';
+import ComplaintHistory from './server/models/ComplaintHistory.js';
+import Notice from './server/models/Notice.js';
+import Settings, { getSettings } from './server/models/Settings.js';
+import EmailLog from './server/models/EmailLog.js';
 
 // ── Types for the legacy JSON structure ──────────────────────────────────────
 
