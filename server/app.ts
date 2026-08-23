@@ -6,13 +6,13 @@ import cookieParser from 'cookie-parser';
 import helmet from 'helmet';
 import cors from 'cors';
 import rateLimit from 'express-rate-limit';
-import { connectDB } from './server/db';
-import User from './server/models/User';
-import Complaint from './server/models/Complaint';
-import ComplaintHistory from './server/models/ComplaintHistory';
-import Notice from './server/models/Notice';
-import Settings, { getSettings } from './server/models/Settings';
-import EmailLog from './server/models/EmailLog';
+import { connectDB } from './db';           // was './server/db'
+import User from './models/User';           // was './server/models/User'
+import Complaint from './models/Complaint'; // etc.
+import ComplaintHistory from './models/ComplaintHistory';
+import Notice from './models/Notice';
+import Settings, { getSettings } from './models/Settings';
+import EmailLog from './models/EmailLog';
 import mongoose from 'mongoose';
 import bcrypt from 'bcryptjs';
 import { v2 as cloudinary } from 'cloudinary';
@@ -23,12 +23,12 @@ import {
   clearCookieToken,
   requireAuth,
   requireAdmin,
-} from './server/middleware/auth';
+} from './middleware/auth';
 import type {
   ComplaintStatus,
   ComplaintPriority,
   ComplaintCategory,
-} from './src/types';
+} from '../src/types';
 
 export const app = express();
 const PORT = parseInt(process.env.PORT || '3000', 10);
