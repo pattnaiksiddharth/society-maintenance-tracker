@@ -17,6 +17,9 @@ import adminRouter from './routes/admin.js';
 
 export const app = express();
 
+// Enable trusting proxy headers (required for Vercel/proxies and express-rate-limit)
+app.set('trust proxy', 1);
+
 // ─── Security Middleware ──────────────────────────────────────────────────────
 
 app.use(
