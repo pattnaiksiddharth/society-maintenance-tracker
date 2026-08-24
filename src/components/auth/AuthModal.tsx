@@ -8,7 +8,10 @@ import {
   Building,
   Phone,
   ShieldCheck, 
-  CheckCircle2 
+  CheckCircle2,
+  Wrench,
+  Bell,
+  Sparkles
 } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
 
@@ -70,32 +73,101 @@ export const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose, isForced 
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md overflow-y-auto">
       <div 
-        className="relative w-full max-w-md rounded-3xl bg-slate-900/95 border border-white/15 shadow-2xl p-6 md:p-8 space-y-5"
+        className="relative w-full max-w-4xl rounded-3xl bg-slate-900/95 border border-white/15 shadow-2xl overflow-hidden flex flex-col md:flex-row my-auto"
         onClick={(e) => e.stopPropagation()}
       >
-        {/* Header */}
-        <div className="flex items-center justify-between pb-3 border-b border-white/10">
-          <div className="flex items-center gap-2.5">
-            <div className="w-9 h-9 rounded-xl bg-blue-600/20 border border-blue-500/30 flex items-center justify-center text-blue-400">
-              <UserPlus className="w-5 h-5" />
+        {/* Left Branding / Product Intro Column */}
+        <div className="w-full md:w-1/2 p-6 md:p-8 bg-gradient-to-br from-blue-950/60 via-slate-900 to-slate-950 flex flex-col justify-between border-b md:border-b-0 md:border-r border-white/10 relative overflow-hidden">
+          {/* Ambient Lighting Accents */}
+          <div className="absolute -top-16 -left-16 w-60 h-60 bg-blue-600/20 rounded-full blur-3xl pointer-events-none" />
+          <div className="absolute -bottom-16 -right-16 w-60 h-60 bg-indigo-600/20 rounded-full blur-3xl pointer-events-none" />
+
+          <div className="relative z-10 space-y-6">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-semibold">
+              <Building className="w-3.5 h-3.5" />
+              <span>Society Maintenance Tracker</span>
             </div>
+
             <div>
-              <h3 className="font-bold text-white text-base">
-                {mode === 'login' ? 'Account Login' : 'Register Account'}
-              </h3>
-              <p className="text-xs text-slate-400">
-                {mode === 'login' ? 'Sign in to access your dashboard' : 'Add a new resident to the society database'}
+              <h2 className="text-xl md:text-2xl font-bold text-white tracking-tight leading-snug">
+                {mode === 'login' ? (
+                  <>
+                    Manage Your Society.<br />
+                    <span className="text-blue-400">Simplify Everyday Living.</span>
+                  </>
+                ) : (
+                  <>
+                    Join Your Society<br />
+                    <span className="text-blue-400">Community</span>
+                  </>
+                )}
+              </h2>
+              <p className="text-xs text-slate-300 mt-3 leading-relaxed">
+                {mode === 'login' 
+                  ? "A smarter way to manage complaints, maintenance requests and society updates — all in one place."
+                  : "Create your account and stay connected with your society's complaints, maintenance and updates."}
               </p>
             </div>
+
+            <div className="space-y-4 pt-2">
+              <div className="flex items-start gap-3">
+                <div className="w-8 h-8 rounded-xl bg-blue-500/15 border border-blue-500/25 flex items-center justify-center text-blue-400 shrink-0 mt-0.5">
+                  <Wrench className="w-4 h-4" />
+                </div>
+                <div>
+                  <h4 className="text-xs font-semibold text-white">Complaint Tracking</h4>
+                  <p className="text-[11px] text-slate-400">Raise and track complaints easily</p>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-3">
+                <div className="w-8 h-8 rounded-xl bg-indigo-500/15 border border-indigo-500/25 flex items-center justify-center text-indigo-400 shrink-0 mt-0.5">
+                  <ShieldCheck className="w-4 h-4" />
+                </div>
+                <div>
+                  <h4 className="text-xs font-semibold text-white">Maintenance Management</h4>
+                  <p className="text-[11px] text-slate-400">Stay updated with society maintenance</p>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-3">
+                <div className="w-8 h-8 rounded-xl bg-cyan-500/15 border border-cyan-500/25 flex items-center justify-center text-cyan-400 shrink-0 mt-0.5">
+                  <Bell className="w-4 h-4" />
+                </div>
+                <div>
+                  <h4 className="text-xs font-semibold text-white">Community Updates</h4>
+                  <p className="text-[11px] text-slate-400">Never miss important notices</p>
+                </div>
+              </div>
+            </div>
           </div>
-          {!isForced && (
-            <button onClick={onClose} className="p-1.5 rounded-xl bg-white/5 hover:bg-white/10 text-slate-400 hover:text-white">
-              <X className="w-5 h-5" />
-            </button>
-          )}
         </div>
+
+        {/* Right Authentication Form Card */}
+        <div className="w-full md:w-1/2 p-6 md:p-8 space-y-5 flex flex-col justify-center">
+          {/* Header */}
+          <div className="flex items-center justify-between pb-3 border-b border-white/10">
+            <div className="flex items-center gap-2.5">
+              <div className="w-9 h-9 rounded-xl bg-blue-600/20 border border-blue-500/30 flex items-center justify-center text-blue-400">
+                <UserPlus className="w-5 h-5" />
+              </div>
+              <div>
+                <h3 className="font-bold text-white text-base">
+                  {mode === 'login' ? 'Account Login' : 'Register Account'}
+                </h3>
+                <p className="text-xs text-slate-400">
+                  {mode === 'login' ? 'Sign in to access your dashboard' : 'Add a new resident to the society database'}
+                </p>
+              </div>
+            </div>
+            {!isForced && (
+              <button onClick={onClose} className="p-1.5 rounded-xl bg-white/5 hover:bg-white/10 text-slate-400 hover:text-white">
+                <X className="w-5 h-5" />
+              </button>
+            )}
+          </div>
 
         {/* Tab Buttons */}
         <div className="flex bg-slate-950 p-1 rounded-2xl border border-white/5">
@@ -225,5 +297,6 @@ export const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose, isForced 
         </form>
       </div>
     </div>
-  );
+  </div>
+);
 };

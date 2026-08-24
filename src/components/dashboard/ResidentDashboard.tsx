@@ -1,6 +1,7 @@
 import React from 'react';
 import type { Complaint, Notice } from '../../types';
 import { StatusBadge, PriorityBadge } from '../common/Badge';
+import { ComplaintStatsChart } from './ComplaintStatsChart';
 import { 
   PlusCircle, 
   PhoneCall, 
@@ -179,8 +180,10 @@ export const ResidentDashboard: React.FC<ResidentDashboardProps> = ({
           </div>
         </div>
 
-        {/* Right Sidebar: Important Announcements & Emergency Contacts */}
+        {/* Right Sidebar: Complaint Stats, Important Announcements & Emergency Contacts */}
         <div className="space-y-6">
+          <ComplaintStatsChart complaints={myComplaints} title="My Complaint Stats" subtitle="Personal ticket overview" />
+
           {/* Important Notices */}
           <div className="bg-white/5 backdrop-blur-md border border-white/10 rounded-3xl p-6 shadow-2xl shadow-black/20">
             <h3 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">

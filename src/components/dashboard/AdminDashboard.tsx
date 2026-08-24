@@ -1,6 +1,7 @@
 import React from 'react';
 import type { Complaint, DashboardStats, Notice } from '../../types';
 import { StatusBadge, PriorityBadge } from '../common/Badge';
+import { ComplaintStatsChart } from './ComplaintStatsChart';
 import { 
   AlertTriangle, 
   CheckCircle2, 
@@ -205,8 +206,11 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
           </div>
         </div>
 
-        {/* Right 1 Col: Pin Board */}
-        <div className="flex flex-col bg-white/5 backdrop-blur-md border border-white/10 rounded-3xl p-6 shadow-2xl shadow-black/20">
+        {/* Right 1 Col: Complaint Statistics Donut Chart & Pin Board */}
+        <div className="space-y-8 flex flex-col">
+          <ComplaintStatsChart complaints={complaints} />
+
+          <div className="flex flex-col bg-white/5 backdrop-blur-md border border-white/10 rounded-3xl p-6 shadow-2xl shadow-black/20">
           <div className="flex justify-between items-center mb-6">
             <div>
               <h2 className="font-semibold text-lg text-white">Pin Board</h2>
@@ -262,5 +266,6 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
         </div>
       </div>
     </div>
-  );
+  </div>
+);
 };
