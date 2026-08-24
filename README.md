@@ -221,3 +221,6 @@ society-maintenance-tracker/
 ├── data-store.json             # legacy demo dataset consumed by the migration script
 └── vercel.json                  # rewrites for SPA + API routing
 ```
+
+**LIVE DEMO**- 
+https://society-maintenance-tracker-virid.vercel.app/
