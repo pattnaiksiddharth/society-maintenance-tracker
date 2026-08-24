@@ -73,9 +73,9 @@ export const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose, isForced 
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md overflow-y-auto">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md overflow-y-auto transition-opacity duration-300">
       <div 
-        className="relative w-full max-w-4xl rounded-3xl bg-slate-900/95 border border-white/15 shadow-2xl overflow-hidden flex flex-col md:flex-row my-auto"
+        className="relative w-full max-w-4xl rounded-3xl bg-slate-900/95 border border-white/15 shadow-2xl overflow-hidden flex flex-col md:flex-row my-auto transition-all duration-500 ease-out transform"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Left Branding / Product Intro Column */}
@@ -91,7 +91,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose, isForced 
             </div>
 
             <div>
-              <h2 className="text-xl md:text-2xl font-bold text-white tracking-tight leading-snug">
+              <h2 className="text-xl md:text-2xl font-bold text-white tracking-tight leading-snug transition-all duration-300">
                 {mode === 'login' ? (
                   <>
                     Manage Your Society.<br />
@@ -104,7 +104,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose, isForced 
                   </>
                 )}
               </h2>
-              <p className="text-xs text-slate-300 mt-3 leading-relaxed">
+              <p className="text-xs text-slate-300 mt-3 leading-relaxed transition-all duration-300">
                 {mode === 'login' 
                   ? "A smarter way to manage complaints, maintenance requests and society updates — all in one place."
                   : "Create your account and stay connected with your society's complaints, maintenance and updates."}
@@ -112,8 +112,8 @@ export const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose, isForced 
             </div>
 
             <div className="space-y-4 pt-2">
-              <div className="flex items-start gap-3">
-                <div className="w-8 h-8 rounded-xl bg-blue-500/15 border border-blue-500/25 flex items-center justify-center text-blue-400 shrink-0 mt-0.5">
+              <div className="flex items-start gap-3 group">
+                <div className="w-8 h-8 rounded-xl bg-blue-500/15 border border-blue-500/25 flex items-center justify-center text-blue-400 shrink-0 mt-0.5 group-hover:scale-110 transition-transform duration-200">
                   <Wrench className="w-4 h-4" />
                 </div>
                 <div>
@@ -122,8 +122,8 @@ export const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose, isForced 
                 </div>
               </div>
 
-              <div className="flex items-start gap-3">
-                <div className="w-8 h-8 rounded-xl bg-indigo-500/15 border border-indigo-500/25 flex items-center justify-center text-indigo-400 shrink-0 mt-0.5">
+              <div className="flex items-start gap-3 group">
+                <div className="w-8 h-8 rounded-xl bg-indigo-500/15 border border-indigo-500/25 flex items-center justify-center text-indigo-400 shrink-0 mt-0.5 group-hover:scale-110 transition-transform duration-200">
                   <ShieldCheck className="w-4 h-4" />
                 </div>
                 <div>
@@ -132,8 +132,8 @@ export const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose, isForced 
                 </div>
               </div>
 
-              <div className="flex items-start gap-3">
-                <div className="w-8 h-8 rounded-xl bg-cyan-500/15 border border-cyan-500/25 flex items-center justify-center text-cyan-400 shrink-0 mt-0.5">
+              <div className="flex items-start gap-3 group">
+                <div className="w-8 h-8 rounded-xl bg-cyan-500/15 border border-cyan-500/25 flex items-center justify-center text-cyan-400 shrink-0 mt-0.5 group-hover:scale-110 transition-transform duration-200">
                   <Bell className="w-4 h-4" />
                 </div>
                 <div>
@@ -163,18 +163,18 @@ export const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose, isForced 
               </div>
             </div>
             {!isForced && (
-              <button onClick={onClose} className="p-1.5 rounded-xl bg-white/5 hover:bg-white/10 text-slate-400 hover:text-white">
+              <button onClick={onClose} className="p-1.5 rounded-xl bg-white/5 hover:bg-white/10 text-slate-400 hover:text-white transition-all duration-200 hover:rotate-90">
                 <X className="w-5 h-5" />
               </button>
             )}
           </div>
 
-        {/* Tab Buttons */}
-        <div className="flex bg-slate-950 p-1 rounded-2xl border border-white/5">
+        {/* Tab Buttons with Smooth Indicator */}
+        <div className="flex bg-slate-950 p-1 rounded-2xl border border-white/5 relative">
           <button
             type="button"
             onClick={() => setMode('login')}
-            className={`flex-1 py-2 text-center text-xs font-semibold rounded-xl transition ${
+            className={`flex-1 py-2 text-center text-xs font-semibold rounded-xl transition-all duration-200 relative z-10 ${
               mode === 'login'
                 ? 'bg-blue-600 text-white shadow-md'
                 : 'text-slate-400 hover:text-white'
@@ -185,7 +185,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose, isForced 
           <button
             type="button"
             onClick={() => setMode('register')}
-            className={`flex-1 py-2 text-center text-xs font-semibold rounded-xl transition ${
+            className={`flex-1 py-2 text-center text-xs font-semibold rounded-xl transition-all duration-200 relative z-10 ${
               mode === 'register'
                 ? 'bg-blue-600 text-white shadow-md'
                 : 'text-slate-400 hover:text-white'

@@ -24,6 +24,7 @@ export const StatusBadge: React.FC<StatusBadgeProps> = ({ status, isOverdue, siz
     case 'OPEN':
       return (
         <span className={`inline-flex items-center gap-1.5 rounded-full bg-slate-500/20 text-slate-300 border border-slate-500/30 font-medium ${sizeClasses}`}>
+          <span className="w-1.5 h-1.5 rounded-full bg-slate-400 animate-pulse-soft shrink-0" />
           <Clock className={size === 'sm' ? 'w-3 h-3 text-slate-400' : 'w-4 h-4 text-slate-400'} />
           Open
         </span>
@@ -31,6 +32,7 @@ export const StatusBadge: React.FC<StatusBadgeProps> = ({ status, isOverdue, siz
     case 'IN_PROGRESS':
       return (
         <span className={`inline-flex items-center gap-1.5 rounded-full bg-blue-500/20 text-blue-400 border border-blue-500/30 font-medium ${sizeClasses}`}>
+          <span className="w-1.5 h-1.5 rounded-full bg-blue-400 animate-pulse-soft shrink-0" />
           <Wrench className={size === 'sm' ? 'w-3 h-3 text-blue-400' : 'w-4 h-4 text-blue-400'} />
           In Progress
         </span>

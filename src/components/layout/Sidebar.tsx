@@ -101,19 +101,19 @@ export const Sidebar: React.FC<SidebarProps> = ({
             <button
               key={item.id}
               onClick={() => setCurrentTab(item.id)}
-              className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-all text-left ${
+              className={`group w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-all duration-200 text-left ${
                 isActive
                   ? 'bg-white/10 text-blue-400 shadow-sm border border-white/10'
                   : 'text-slate-400 hover:bg-white/5 hover:text-slate-200'
               }`}
             >
               <div
-                className={`w-2 h-2 rounded-full transition-all ${
-                  isActive ? 'bg-blue-400 shadow-sm shadow-blue-400' : 'border border-slate-500'
+                className={`w-2 h-2 rounded-full transition-all duration-200 ${
+                  isActive ? 'bg-blue-400 shadow-sm shadow-blue-400' : 'border border-slate-500 group-hover:border-slate-300'
                 }`}
               />
-              <Icon className={`w-4 h-4 ${isActive ? 'text-blue-400' : 'text-slate-400'}`} />
-              <span className="flex-1">{item.label}</span>
+              <Icon className={`w-4 h-4 transition-transform duration-200 group-hover:translate-x-0.5 ${isActive ? 'text-blue-400' : 'text-slate-400 group-hover:text-slate-200'}`} />
+              <span className="flex-1 transition-colors duration-200">{item.label}</span>
             </button>
           );
         })}
@@ -127,19 +127,19 @@ export const Sidebar: React.FC<SidebarProps> = ({
 
             <button
               onClick={onOpenSettingsModal}
-              className="w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-slate-400 hover:bg-white/5 hover:text-slate-200 transition-all text-left"
+              className="group w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-slate-400 hover:bg-white/5 hover:text-slate-200 transition-all duration-200 text-left"
             >
-              <div className="w-2 h-2 rounded-full border border-slate-500" />
-              <Sliders className="w-4 h-4 text-slate-400" />
+              <div className="w-2 h-2 rounded-full border border-slate-500 group-hover:border-slate-300 transition-colors" />
+              <Sliders className="w-4 h-4 text-slate-400 group-hover:text-slate-200 transition-transform duration-200 group-hover:translate-x-0.5" />
               <span className="flex-1">SLA & Settings</span>
             </button>
 
             <button
               onClick={onOpenEmailDrawer}
-              className="w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-slate-400 hover:bg-white/5 hover:text-slate-200 transition-all text-left relative"
+              className="group w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-slate-400 hover:bg-white/5 hover:text-slate-200 transition-all duration-200 text-left relative"
             >
-              <div className="w-2 h-2 rounded-full border border-slate-500" />
-              <Mail className="w-4 h-4 text-slate-400" />
+              <div className="w-2 h-2 rounded-full border border-slate-500 group-hover:border-slate-300 transition-colors" />
+              <Mail className="w-4 h-4 text-slate-400 group-hover:text-slate-200 transition-transform duration-200 group-hover:translate-x-0.5" />
               <span className="flex-1">Email Dispatches</span>
               {emailCount > 0 && (
                 <span className="px-2 py-0.5 text-[10px] font-bold bg-blue-500/20 text-blue-400 border border-blue-500/30 rounded-full">

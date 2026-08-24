@@ -2,6 +2,7 @@ import React from 'react';
 import type { Complaint, Notice } from '../../types';
 import { StatusBadge, PriorityBadge } from '../common/Badge';
 import { ComplaintStatsChart } from './ComplaintStatsChart';
+import { AnimatedCounter } from '../common/AnimatedCounter';
 import { 
   PlusCircle, 
   PhoneCall, 
@@ -60,7 +61,7 @@ export const ResidentDashboard: React.FC<ResidentDashboardProps> = ({
           <div className="flex flex-wrap items-center gap-3">
             <button
               onClick={onOpenRaiseModal}
-              className="flex items-center gap-2 px-6 py-3.5 rounded-2xl bg-blue-600 hover:bg-blue-500 text-white font-semibold text-sm shadow-xl shadow-blue-500/25 border border-blue-400/30 transition-all hover:scale-[1.02] active:scale-[0.98]"
+              className="btn-interactive flex items-center gap-2 px-6 py-3.5 rounded-2xl bg-blue-600 hover:bg-blue-500 text-white font-semibold text-sm shadow-xl shadow-blue-500/25 border border-blue-400/30"
             >
               <PlusCircle className="w-5 h-5" />
               <span>Raise New Complaint</span>
@@ -71,36 +72,39 @@ export const ResidentDashboard: React.FC<ResidentDashboardProps> = ({
 
       {/* Resident Metric Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-        <div className="p-6 rounded-3xl bg-white/5 backdrop-blur-md border border-white/10">
+        <div className="card-interactive p-6 rounded-3xl bg-white/5 backdrop-blur-md border border-white/10">
           <div className="flex items-center justify-between mb-2">
             <span className="text-slate-400 text-sm font-medium">My Open Tickets</span>
             <Clock className="w-4 h-4 text-slate-400" />
           </div>
-          <p className="text-3xl font-bold text-white">
-            {myComplaints.filter(c => c.status === 'OPEN').length}
-          </p>
+          <AnimatedCounter 
+            value={myComplaints.filter(c => c.status === 'OPEN').length} 
+            className="text-3xl font-bold text-white"
+          />
           <p className="text-xs text-slate-500 mt-1">Awaiting technician inspection</p>
         </div>
 
-        <div className="p-6 rounded-3xl bg-white/5 backdrop-blur-md border border-white/10">
+        <div className="card-interactive p-6 rounded-3xl bg-white/5 backdrop-blur-md border border-white/10">
           <div className="flex items-center justify-between mb-2">
             <span className="text-slate-400 text-sm font-medium">In Progress</span>
             <Wrench className="w-4 h-4 text-blue-400" />
           </div>
-          <p className="text-3xl font-bold text-blue-400">
-            {activeComplaints.filter(c => c.status === 'IN_PROGRESS').length}
-          </p>
+          <AnimatedCounter 
+            value={activeComplaints.filter(c => c.status === 'IN_PROGRESS').length} 
+            className="text-3xl font-bold text-blue-400"
+          />
           <p className="text-xs text-slate-500 mt-1">Technician assigned & active</p>
         </div>
 
-        <div className="p-6 rounded-3xl bg-white/5 backdrop-blur-md border border-white/10">
+        <div className="card-interactive p-6 rounded-3xl bg-white/5 backdrop-blur-md border border-white/10">
           <div className="flex items-center justify-between mb-2">
             <span className="text-slate-400 text-sm font-medium">Resolved</span>
             <ShieldCheck className="w-4 h-4 text-emerald-400" />
           </div>
-          <p className="text-3xl font-bold text-emerald-400">
-            {resolvedComplaints.length}
-          </p>
+          <AnimatedCounter 
+            value={resolvedComplaints.length} 
+            className="text-3xl font-bold text-emerald-400"
+          />
           <p className="text-xs text-slate-500 mt-1">Successfully closed tickets</p>
         </div>
       </div>

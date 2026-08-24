@@ -2,6 +2,7 @@ import React from 'react';
 import type { Complaint, DashboardStats, Notice } from '../../types';
 import { StatusBadge, PriorityBadge } from '../common/Badge';
 import { ComplaintStatsChart } from './ComplaintStatsChart';
+import { AnimatedCounter } from '../common/AnimatedCounter';
 import { 
   AlertTriangle, 
   CheckCircle2, 
@@ -45,37 +46,39 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
       {/* 4 Metric Cards */}
       <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         {/* Total Open */}
-        <div className="p-6 rounded-3xl bg-white/5 backdrop-blur-md border border-white/10 hover:border-white/20 transition group">
+        <div className="card-interactive p-6 rounded-3xl bg-white/5 backdrop-blur-md border border-white/10 hover:border-white/20 transition group">
           <p className="text-slate-400 text-sm mb-2 font-medium">Total Open</p>
           <div className="flex items-baseline gap-2">
-            <span className="text-4xl font-bold tracking-tight text-white">
-              {stats?.totalOpen ?? 0}
-            </span>
+            <AnimatedCounter 
+              value={stats?.totalOpen ?? 0} 
+              className="text-4xl font-bold tracking-tight text-white" 
+            />
             <span className="text-xs text-emerald-400 font-medium">
               +{stats?.openToday ?? 4} today
             </span>
           </div>
           <div className="mt-3 w-full bg-white/5 h-1.5 rounded-full overflow-hidden">
-            <div className="bg-slate-400 h-full rounded-full" style={{ width: `${Math.min(100, (stats?.totalOpen || 1) * 8)}%` }} />
+            <div className="bg-slate-400 h-full rounded-full transition-all duration-1000 ease-out" style={{ width: `${Math.min(100, (stats?.totalOpen || 1) * 8)}%` }} />
           </div>
         </div>
 
         {/* In Progress */}
-        <div className="p-6 rounded-3xl bg-white/5 backdrop-blur-md border border-white/10 hover:border-white/20 transition group">
+        <div className="card-interactive p-6 rounded-3xl bg-white/5 backdrop-blur-md border border-white/10 hover:border-white/20 transition group">
           <p className="text-slate-400 text-sm mb-2 font-medium">In Progress</p>
           <div className="flex items-baseline gap-2">
-            <span className="text-4xl font-bold tracking-tight text-white">
-              {stats?.inProgress ?? 0}
-            </span>
+            <AnimatedCounter 
+              value={stats?.inProgress ?? 0} 
+              className="text-4xl font-bold tracking-tight text-white" 
+            />
             <span className="text-xs text-blue-400 font-medium">Active work</span>
           </div>
           <div className="mt-3 w-full bg-white/5 h-1.5 rounded-full overflow-hidden">
-            <div className="bg-blue-500 h-full rounded-full" style={{ width: `${Math.min(100, (stats?.inProgress || 1) * 15)}%` }} />
+            <div className="bg-blue-500 h-full rounded-full transition-all duration-1000 ease-out" style={{ width: `${Math.min(100, (stats?.inProgress || 1) * 15)}%` }} />
           </div>
         </div>
 
         {/* Overdue (Urgent Glow) */}
-        <div className="p-6 rounded-3xl bg-red-500/10 backdrop-blur-md border border-red-500/25 hover:border-red-500/40 transition group relative overflow-hidden">
+        <div className="card-interactive p-6 rounded-3xl bg-red-500/10 backdrop-blur-md border border-red-500/25 hover:border-red-500/40 transition group relative overflow-hidden">
           <div className="absolute top-0 right-0 w-24 h-24 bg-red-500/10 rounded-full blur-xl pointer-events-none" />
           <div className="flex items-center justify-between">
             <p className="text-red-400 text-sm mb-2 font-medium">Overdue</p>
@@ -84,29 +87,32 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
             )}
           </div>
           <div className="flex items-baseline gap-2">
-            <span className="text-4xl font-bold text-red-500 tracking-tight">
-              {String(stats?.overdue ?? 0).padStart(2, '0')}
-            </span>
+            <AnimatedCounter 
+              value={stats?.overdue ?? 0} 
+              padZero
+              className="text-4xl font-bold text-red-500 tracking-tight" 
+            />
             <span className="text-xs text-red-400 font-medium">Critical SLA</span>
           </div>
           <div className="mt-3 w-full bg-red-950/40 h-1.5 rounded-full overflow-hidden">
-            <div className="bg-red-500 h-full rounded-full" style={{ width: `${Math.min(100, (stats?.overdue || 1) * 20)}%` }} />
+            <div className="bg-red-500 h-full rounded-full transition-all duration-1000 ease-out" style={{ width: `${Math.min(100, (stats?.overdue || 1) * 20)}%` }} />
           </div>
         </div>
 
         {/* Resolved */}
-        <div className="p-6 rounded-3xl bg-white/5 backdrop-blur-md border border-white/10 hover:border-white/20 transition group">
+        <div className="card-interactive p-6 rounded-3xl bg-white/5 backdrop-blur-md border border-white/10 hover:border-white/20 transition group">
           <p className="text-slate-400 text-sm mb-2 font-medium">Resolved (MTD)</p>
           <div className="flex items-baseline gap-2">
-            <span className="text-4xl font-bold tracking-tight text-white">
-              {stats?.resolved ?? 0}
-            </span>
+            <AnimatedCounter 
+              value={stats?.resolved ?? 0} 
+              className="text-4xl font-bold tracking-tight text-white" 
+            />
             <span className="text-xs text-emerald-400 font-medium">
-              {stats?.resolutionRatePercent ?? 94}% rate
+              <AnimatedCounter value={stats?.resolutionRatePercent ?? 94} suffix="%" /> rate
             </span>
           </div>
           <div className="mt-3 w-full bg-white/5 h-1.5 rounded-full overflow-hidden">
-            <div className="bg-emerald-500 h-full rounded-full" style={{ width: `${stats?.resolutionRatePercent ?? 90}%` }} />
+            <div className="bg-emerald-500 h-full rounded-full transition-all duration-1000 ease-out" style={{ width: `${stats?.resolutionRatePercent ?? 90}%` }} />
           </div>
         </div>
       </section>

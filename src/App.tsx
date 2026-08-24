@@ -261,7 +261,7 @@ function MainLayout() {
         />
 
         {/* Tab Views */}
-        <div className="flex-1 min-h-0 pb-12">
+        <div key={currentTab} className="flex-1 min-h-0 pb-12 transition-all duration-200 ease-out">
           {currentTab === 'dashboard' && (
             isAdmin ? (
               <AdminDashboard
